@@ -1,0 +1,6 @@
+pygcode
+solidpython
+pyserial
+Cython
+octorest
+keyboard

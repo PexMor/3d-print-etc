@@ -4,21 +4,21 @@
 
 ## Building the printer Anet8
 
-[The big troubleshooting guide v2](https://gr33nonline.files.wordpress.com/2017/05/the-big-troubleshooting-guide.pdf)
+PDF: [The big troubleshooting guide v2](https://gr33nonline.files.wordpress.com/2017/05/the-big-troubleshooting-guide.pdf)
 
 __Board - HW__
 
-* [ANET 3D Board v1.0](https://github.com/ralf-e/ANET-3D-Board-V1.0) - reverse engineered schematics
-* [Sanguinololu/AVR1284p](https://reprap.org/wiki/Sanguinololu#Schematic_.26_Board_Images)
+* Github: [ANET 3D Board v1.0](https://github.com/ralf-e/ANET-3D-Board-V1.0) - reverse engineered schematics
+* RepRap: [Sanguinololu/AVR1284p](https://reprap.org/wiki/Sanguinololu#Schematic_.26_Board_Images)
 
-Google search `anet c43` (which is the number of capacitor/smoother for B_T ala bed termistor)
+Google search `anet C43` (which is the number of capacitor/smoother for B_T ala bed termistor)
 
-* https://www.thingiverse.com/groups/anet-a8-prusa-i3/forums/general/topic:17964
-* https://www.reddit.com/r/3Dprinting/comments/6hoxei/troubleshooting_anet_a8_mobo/
-* https://reprap.org/forum/read.php?406,758418
-* https://3dfactory.cz/2018/04/09/chybna-teplota-podlozky/
-* https://gr33nonline.files.wordpress.com/2017/05/the-big-troubleshooting-guide.pdf
-* https://www.facebook.com/groups/1068531466501015/permalink/2116665988354219/?comment_id=2116717085015776&reply_comment_id=2116719315015553
+* [at Thingverse forum](https://www.thingiverse.com/groups/anet-a8-prusa-i3/forums/general/topic:17964)
+* [at Redit.com](https://www.reddit.com/r/3Dprinting/comments/6hoxei/troubleshooting_anet_a8_mobo/)
+* [at reprap.org forum](https://reprap.org/forum/read.php?406,758418)
+* CZ: [3ddactory.cz blog](https://3dfactory.cz/2018/04/09/chybna-teplota-podlozky/)
+* [at facebook.com/anet](https://www.facebook.com/groups/1068531466501015/permalink/2116665988354219/?comment_id=2116717085015776&reply_comment_id=2116719315015553)
+* also the PDF: [The big troubleshooting guide v2](https://gr33nonline.files.wordpress.com/2017/05/the-big-troubleshooting-guide.pdf) mentions the capacitor issue
 
 ## Marlin for Anet fun
 
@@ -42,11 +42,11 @@ For GUI lovers one screenshot that displays properly configured Marlin.
 
 ### Patching firmware
 
-When you decide to go non-stock or in other words replace some part of your printer by some (better) alternative. Then you in most case would have to update the `config.h` or `config_adv.h` that you have copied as noted above.
+When you decide to replace some part of your printer by some (better) alternative. Then you in most case would have to update the `config.h` or `config_adv.h` that you have copied into Marlin source root folder.
 
 ### Flashing firmware
 
-The best and the most secure way is to use `usbasp` or its clone to write firmware via __J1__ connector which is SPI capable of ISP programming.
+The best and the safest way is to use `usbasp` (or its clone) to write firmware via __J1__ connector which is SPI capable of ISP programming (it has RST pin).
 
 |USB ID   |Device
 |---------|------
@@ -61,7 +61,7 @@ $AVRDUDE -c usbasp -p m1284p -P usb -U flash:r:$BACKUP -C $AVRDUDE_CONF
 
 The flash the new firmware:
 
-> __Note:__ when using USPASP like from [atnel.pl](https://atnel.pl/EN/atb-usbasp-programmer.html) based on original [Fischl design](https://www.fischl.de/usbasp/). You have to use special cable the 2x5 ribbon cable CANNOT be used as is. You have to either make a new cable (2x5->2x3) or use the 2x5->2x3 adapter (see [hints](https://uptanium.org/Firmware-Snapshot-A8.html)). You could also user the Arduino as ISP programmer sketch, but my favourite is the USBASP.
+> __Note:__ when using USPASP like from [atnel.pl](https://atnel.pl/EN/atb-usbasp-programmer.html) based on original [Fischl design](https://www.fischl.de/usbasp/). You have to use special cable the 2x5 ribbon cable that CANNOT be used as-is. You have to either make a new cable (2x5->2x3, see the [link to schematics](https://github.com/ralf-e/ANET-3D-Board-V1.0)) or use the 2x5->2x3 adapter (see [hints](https://uptanium.org/Firmware-Snapshot-A8.html)). Eventually you could also user the Arduino as ISP programmer sketch, but my favourite is the USBASP.
 
 ![2x5 to 2x3 adapter](usbasp_adapter.jpg)
 
@@ -69,7 +69,7 @@ The flash the new firmware:
 $AVRDUDE -v -p m1284p -C $AVRDUDE_CONF -c usbasp -U flash:w:$FW:i
 ```
 
-the firmare file tends to be in `<Marlin-folder>/.pio/build/sanguino1284p/firmware.hex` folder.
+the firmare file (.HEX) is built in `<Marlin-folder>/.pio/build/sanguino1284p/firmware.hex` folder (or `just find . -name firmware.hex`).
 
 ```bash
 AVRDUDE=$HOME/.platformio/packages/tool-avrdude/bin/avrdude
@@ -150,8 +150,42 @@ python pronterface.py
 
 ![Pronterface UI](pronterface.png)
 
+## Calibrations
+
+To make good prints you need some callibration. There is number of them. As recomended by the experienced users you should do:
+
+1. Calibrate the x/z-axis, so the distance between the lead screws and smooth rods on both sides has to be __perfectly parallel__ otherwise the z-axis moves might in the worst case jam and cause skipped steps! In the best case it would do some anoyning noise. All that caused by non-parallel guides on z-axis. Yt:[Anet A8 - Solution for problems with Z axis stepper [Eng sub]](https://youtu.be/e7f-x3-mroI), Yt: [3D printer wobbling solved - mechanical improvement Geeetech prusa i3 mk8, Anet A8](https://youtu.be/G5XpvJxJVaQ).
+
+2. Calibrate z/x-axis horizontality. This is a task to make sure that both z-axis drivers (Z1 and Z2) are running in sync. This cannot be ensured for 100% because we do not have closed loop steppers (like S42 from Steppers online) but can we can do our best to make sure they start at equal level and have no obstacles on their way.
+
+3. Level the Heated Bed (see below for mesh tool with Octoprint)
+
+4. Extrusion and retraction between prints and on start of print (preamble code)
+
+5. Autoleveling with the Z-probe (mesh)
+
+### Heat Bed  calibration
+
+The tool: `ocmd.py`
+
+After using the `Printrun/proconsole.py` CLI to move around I have relalized that there are some batches of commands that
+[python/ocmd.py](https://github.com/PexMor/3d-print-etc/python/ocmd.py).
+
 ## Refs
 
+Interesting software and tools to use during th whole model to print.
+
+### 3D Modelers
+
+* Autodesk: [Tinker CAD](https://www.tinkercad.com)
+* Autodesk: [Fusion 360](https://www.autodesk.com/products/fusion-360/personal)
 * [Solvespace](https://github.com/solvespace/solvespace) - 3D parametric modeling SW, last update 2016
+* [FreeCAD](https://www.freecadweb.org/)
+* [Blender](https://www.blender.org/)
+
+### Slicers
+
+* [CURA Ultimaker](https://ultimaker.com/software/ultimaker-cura)
+* [Prusa Slic3r](https://github.com/prusa3d/PrusaSlicer/releases)
 
 
