@@ -169,7 +169,7 @@ To make good prints you need some callibration. There is number of them. As reco
 The tool: `ocmd.py`
 
 After using the `Printrun/proconsole.py` CLI to move around I have relalized that there are some batches of commands that
-[python/ocmd.py](https://github.com/PexMor/3d-print-etc/python/ocmd.py).
+[python/ocmd.py](https://github.com/PexMor/3d-print-etc/tree/master/python).
 
 ## Refs
 
