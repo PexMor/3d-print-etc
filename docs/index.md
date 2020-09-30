@@ -224,7 +224,7 @@ Interesting software and tools to use during th whole model to print.
 * YT: [Remove ringing by tuning acceleration and junction deviation - step by step guide](https://youtu.be/Mnvj6xCzikM)
 * YT: [Should you be using IGUS polymer bushings?](https://youtu.be/ZGBipbgwgME)
 * YT: [Complete linear rails conversion of CR-10 3d printer](https://youtu.be/pumRIHed8U0)
-* YT: [Power Screws: Torque, Power, and Efficiency | Standard Thread Profiles | ACME Lead Screw Example](https://youtu.be/zgIPRXd0rBM)
+* YT: [Power screws](https://youtu.be/zgIPRXd0rBM) - Power Screws: Torque, Power, and Efficiency | Standard Thread Profiles | ACME Lead Screw Example
 
 * YT: [3D printing, what to use... BELTS or SCREWS ??](https://youtu.be/YU5SdzRVtv0)
 * [Printing calculations](https://dyzedesign.com/2016/11/printing-300-mm-s-part-2-calculations/)
