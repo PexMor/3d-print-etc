@@ -102,6 +102,13 @@ def main():
             if (z_pos>0.0):
                 z_pos-=0.1
                 c.gcode("G0 Z{}".format(z_pos))
+        elif key==48: # 0
+            z_pos = 0
+            c.gcode("G0 Z{}".format(z_pos))
+        elif key==117: # u
+            c.gcode("M18")
+        elif key==108: # l
+            c.gcode("M17")
         elif key==27:
             keyB = ord(sys.stdin.read(1))
             keyC = ord(sys.stdin.read(1))

@@ -9,9 +9,9 @@ PDF: [The big troubleshooting guide v2](https://gr33nonline.files.wordpress.com/
 __Board - HW__
 
 * Github: [ANET 3D Board v1.0](https://github.com/ralf-e/ANET-3D-Board-V1.0) - reverse engineered schematics
-* RepRap: [Sanguinololu/AVR1284p](https://reprap.org/wiki/Sanguinololu#Schematic_.26_Board_Images)
+* RepRap: [Sanguinololu/AVR1284p](https://reprap.org/wiki/Sanguinololu#Schematic_.26_Board_Images) - this board is the Anet board based on.
 
-Google search `anet C43` (which is the number of capacitor/smoother for B_T ala bed termistor)
+Google search `Anet C43` (which is the number of capacitor/smoother for B_T ala bed termistor)
 
 * [at Thingverse forum](https://www.thingiverse.com/groups/anet-a8-prusa-i3/forums/general/topic:17964)
 * [at Redit.com](https://www.reddit.com/r/3Dprinting/comments/6hoxei/troubleshooting_anet_a8_mobo/)
@@ -20,7 +20,7 @@ Google search `anet C43` (which is the number of capacitor/smoother for B_T ala 
 * [at facebook.com/anet](https://www.facebook.com/groups/1068531466501015/permalink/2116665988354219/?comment_id=2116717085015776&reply_comment_id=2116719315015553)
 * also the PDF: [The big troubleshooting guide v2](https://gr33nonline.files.wordpress.com/2017/05/the-big-troubleshooting-guide.pdf) mentions the capacitor issue
 
-## Marlin for Anet fun
+## Marlin for Anet
 
 * [marlinfw.org](https://marlinfw.org/) - the alternative firmware compatible with Anet 8 Mainboard
 * [MarlinFirmware/Marlin](https://github.com/MarlinFirmware/Marlin)
@@ -154,7 +154,7 @@ python pronterface.py
 
 To make good prints you need some callibration. There is number of them. As recomended by the experienced users you should do:
 
-1. Calibrate the x/z-axis, so the distance between the lead screws and smooth rods on both sides has to be __perfectly parallel__ otherwise the z-axis moves might in the worst case jam and cause skipped steps! In the best case it would do some anoyning noise. All that caused by non-parallel guides on z-axis. Yt:[Anet A8 - Solution for problems with Z axis stepper [Eng sub]](https://youtu.be/e7f-x3-mroI), Yt: [3D printer wobbling solved - mechanical improvement Geeetech prusa i3 mk8, Anet A8](https://youtu.be/G5XpvJxJVaQ).
+1. Calibrate the x/z-axis, so the distance between the lead screws and smooth rods on both sides has to be __perfectly parallel__ otherwise the z-axis moves might in the worst case jam and cause skipped steps! In the best case it would do some anoyning noise. All that caused by non-parallel guides on z-axis. Yt:[Anet A8 - Solution for problems with Z axis stepper [Eng sub]](https://youtu.be/e7f-x3-mroI), Yt: [3D printer wobbling solved - mechanical improvement Geeetech prusa i3 mk8, Anet A8](https://youtu.be/G5XpvJxJVaQ), [Anet A8 Z-Axis alignment (Proper z-axis wobble fix and noice reduction)](https://youtu.be/Z8xEaJfzx4g).
 
 2. Calibrate z/x-axis horizontality. This is a task to make sure that both z-axis drivers (Z1 and Z2) are running in sync. This cannot be ensured for 100% because we do not have closed loop steppers (like S42 from Steppers online) but can we can do our best to make sure they start at equal level and have no obstacles on their way.
 
@@ -171,7 +171,7 @@ The tool: `ocmd.py`
 After using the `Printrun/proconsole.py` CLI to move around I have relalized that there are some batches of commands that
 [python/ocmd.py](https://github.com/PexMor/3d-print-etc/tree/master/python).
 
-## Refs
+## References
 
 Interesting software and tools to use during th whole model to print.
 
@@ -187,5 +187,48 @@ Interesting software and tools to use during th whole model to print.
 
 * [CURA Ultimaker](https://ultimaker.com/software/ultimaker-cura)
 * [Prusa Slic3r](https://github.com/prusa3d/PrusaSlicer/releases)
+
+## Dict
+
+|English|Czech
+|-------|-----
+|pitch|stoupání, vzdálenost mezi závity
+|lead|vedení, lineární posun pro jednu otáčku závitu
+|[lead screw](https://en.wikipedia.org/wiki/Leadscrew)|vodící či pohybový šroub (často trapézový nebo [kuličkový](https://cs.wikipedia.org/wiki/Kuli%C4%8Dkov%C3%BD_%C5%A1roub))
+|[ball screw](https://en.wikipedia.org/wiki/Ball_screw)|kuličkový šroub (druh vodícího šroubu s malou vůlí)
+|[trapezoidal or acme thread](https://en.wikipedia.org/wiki/Trapezoidal_thread_form)|trapézový závit (používaný na trapézovém šroubu)
+
+* [Pitch vs lead](https://www.thomsonlinear.com/en/support/tips/difference-between-screw-pitch-and-lead) - single, double, triple, four start
+
+* [Acme or trapezoidal? What’s the difference between lead screw designs?](https://www.linearmotiontips.com/acme-or-trapezoidal-whats-the-difference-between-lead-screws-designs/)
+* [What is a follower nut, and what role does it play in lead screw operation?](https://www.linearmotiontips.com/what-is-a-follower-nut-and-what-role-does-it-play-in-lead-screw-operation/)
+
+* Thingverse: Temp tower [#1](https://www.thingiverse.com/thing:2493504), [#2](https://www.thingiverse.com/thing:2729076), [how to make your own](https://hobbyhoarder.net/temperature-tower/) or
+
+[Other test prints](https://all3dp.com/2/3d-printer-test-print-10-best-3d-models-to-torture-your-3d-printer/):
+
+* [3D Benchy](https://www.thingiverse.com/thing:763622)
+* [All-In-One 3D Printer Test](https://www.thingiverse.com/thing:2656594/makes)
+* [XYZ 20mm cube](https://www.thingiverse.com/thing:1278865)
+* [Cali Cat – The Calibration Cat](https://www.thingiverse.com/thing:1545913)
+* [MatterHackers' Mascot Phil A. Ment](https://www.thingiverse.com/thing:2557603)
+* [Smart Compact Temperature Calibration Tower](https://www.thingiverse.com/thing:2729076)
+* [Open-Source Printer Evaluation](https://github.com/kickstarter/kickstarter-autodesk-3d)
+* [PolyPearl Tower](https://www.thingiverse.com/thing:2064029)
+* [Ultrafast and Economical Stringing Test](https://www.thingiverse.com/thing:2219103)
+* [Bed Leveling Calibration Test Object (Parametric)](https://www.thingiverse.com/thing:34558)
+
+[see also - printer calibration basics](https://all3dp.com/2/how-to-calibrate-a-3d-printer-simply-explained/)
+
+* YT: [Linear rails guide and test on Ender 3 and Ender 5](https://youtu.be/I3xMHjiYENk)
+* YT: [Remove ringing by tuning acceleration and junction deviation - step by step guide](https://youtu.be/Mnvj6xCzikM)
+* YT: [Should you be using IGUS polymer bushings?](https://youtu.be/ZGBipbgwgME)
+* YT: [Complete linear rails conversion of CR-10 3d printer](https://youtu.be/pumRIHed8U0)
+* YT: [Power Screws: Torque, Power, and Efficiency | Standard Thread Profiles | ACME Lead Screw Example](https://youtu.be/zgIPRXd0rBM)
+
+* YT: [3D printing, what to use... BELTS or SCREWS ??](https://youtu.be/YU5SdzRVtv0)
+* [Printing calculations](https://dyzedesign.com/2016/11/printing-300-mm-s-part-2-calculations/)
+* [Stepper motor basics](https://www.geckodrive.com/support/step-motor-basics.html)
+
 
 
